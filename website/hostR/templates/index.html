@@ -1,0 +1,160 @@
+<html>
+<title>My hostR</title>
+{% extends "base.html" %}
+{% block content %}
+<div class="row text-center">
+	<h1 class="what-info">What info do you want to view/add?</h1>
+</div>
+<div class="panel-group" id="accordion">
+    <div class="panel panel-primary">
+        <div class="panel-heading text-center">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapseOne">Around The House</a>
+            </h4>
+            
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+            	<button type="button" class="modalLauncher btn btn-success btn-md" data-toggle="modal" data-target="#houseModal">
+	            	Add Question
+	            </button>
+                <table class="table table-hover">
+                	<thead>
+                		<tr>
+                			<th>Question</th>
+                			<th>Answer</th>
+                			<th></th>
+                		</tr>
+                	</thead>
+                	<tbody id='houseTableBody'>
+                		{% for question in questions %}
+                		<tr>
+                			<td>{{ question.type }} {{ question.subject }}?</td>
+                			<td>{{ question.answer }}</td>
+                			<td>
+                				<a href='#' id='delete_{{question.qId}}'><i class='material-icons' style='float:right;'>close</i></a>
+                				<span id='editHouse_{{question.qId}}' class='editField glyphicon glyphicon-edit' style='float:right;'></span>
+                			</td>
+                		</tr>
+                		{% endfor %}
+                	</tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading text-center">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapseTwo">In The Area</a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+            	<button type="button" class="btn btn-secondary btn-lg btn-block area-choice" onclick="showAreaModal('Breakfast')">Breakfast</button>
+                <button type="button" class="btn btn-secondary btn-lg btn-block area-choice" onclick="showAreaModal('Lunch')">Lunch</button>
+                <button type="button" class="btn btn-secondary btn-lg btn-block area-choice" onclick="showAreaModal('Dinner')">Dinner</button>
+                <button type="button" class="btn btn-secondary btn-lg btn-block area-choice" onclick="showAreaModal('Bars')">Bars</button>
+                <button type="button" class="btn btn-secondary btn-lg btn-block area-choice" onclick="showAreaModal('Grocery Stores')">Grocery Stores</button>
+                <button type="button" class="btn btn-secondary btn-lg btn-block area-choice" onclick="showAreaModal('Attractions')">Attractions</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="areaModal" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-inline" id="areaForm" action="/insertAreaAnswer/">
+						{% csrf_token %}
+						<input type="hidden" name="category" id="category">
+						<div class="row">
+	                        <div class="col-md-4"><label for="placeName">Name</label></div>
+	                        <div class="col-md-8"><input type="text" class="text-line" name="placeName" id="placeName" required></div>
+		                </div>
+		                <div class="row">
+	                        <div class="col-md-4"><label id="attrLabel" for="placeAttr"></label></div>
+	                        <div class="col-md-8"><input type="text" class="text-line" name="placeAttr" id="placeAttr" required></div>
+	                    </div>
+		                <div class="row">
+	                        <div class="col-md-4"><label for="placeDistance">Distance (miles)</label></div>
+	                        <div class="col-md-8"><input type="text" class="text-line" name="placeDistance" id="placeDistance" required></div>
+	                    </div>
+						<div class="row">
+					    	<button type="submit" class="btn btn-success" style="float:right;">Add Recommendation</button>
+					    </div>
+					    <div class="row text-center" id="alertRow2"></div>
+					    <div class="row">
+							<table class="table table-hover">
+			                	<thead>
+			                		<tr id='areaTableHead'></tr>
+			                	</thead>
+			                	<tbody id='sortable'></tbody>
+			                </table>
+					    </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div class="modal fade" id="houseModal" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">New Question</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-inline" id="houseForm" action="/insertHouseQuestion/">
+						{% csrf_token %}
+						<div class="row">
+							<div class="form-group col-md-4">
+								<label for="qType">Type:</label>
+								<select class="form-control custom-select" name="qType" id="qType" required>
+								    <option value="What is" selected>What is</option>
+								    <option value="What are">What are</option>
+								    <option value="Where is">Where is</option>
+								    <option value="Where are">Where are</option>
+								    <option value="How do I">How do I</option>
+								</select>
+							</div>
+							<div class="form-group col-md-8">
+								<label for="subject">Subject:</label>
+					    		<input type="text" class="text-line" name="subject" id="subject" placeholder="Subject" required>
+					    	</div>
+					    </div>
+					    <div class="row">
+					    	<div class="form-group col-md-12">
+						    	<label for="answer">Answer:</label>
+						    	<input type="text" class="text-line" name="answer" id="answer" placeholder="Answer" required>
+						    </div>
+						</div>
+						<div class="row">
+					    	<button type="submit" class="btn btn-default">Submit</button>
+					    </div>
+					    <input type="hidden" name="qId" id="houseqId">
+					    <div class="row text-center" id="alertRow1"></div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="confirmDelete" title="Delete Question" style="display:none;">
+		<p>
+			<span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>
+			This item will be permanently deleted and cannot be recovered. Are you sure?
+		</p>
+	</div>
+    
+</div>
+<script src="/static/indexpage.js"></script>
+{% endblock %}
+
+</html>

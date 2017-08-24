@@ -1,0 +1,21 @@
+AMAZON.HelpIntent what can i say
+AMAZON.HelpIntent what can you do
+AMAZON.HelpIntent what can i ask you
+AMAZON.HelpIntent i need help
+AMAZON.HelpIntent help
+AMAZON.HelpIntent help me
+
+quitIntent quit
+quitIntent exit
+quitIntent quit hoster
+quitIntent exit hoster
+
+questionIntent where is {QUESTION_ITEM}
+questionIntent where are {QUESTION_ITEM}
+questionIntent where is {QUESTION_ITEM}
+questionIntent where are {QUESTION_ITEM}
+questionIntent what is {QUESTION_ITEM}
+questionIntent what are {QUESTION_ITEM}
+questionIntent how do i use {QUESTION_ITEM}
+questionIntent where can i go for {QUESTION_ITEM}
+questionIntent i need a recommendation for {QUESTION_ITEM}

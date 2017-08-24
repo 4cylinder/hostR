@@ -1,0 +1,107 @@
+.navbar-brand.home-button {
+	text-align: center;
+    background-color:#00bcd4;
+    color: white;
+}
+
+.nav {
+	font-size: 1.25em;
+}
+
+.modalLauncher {
+	float: right;
+}
+
+.panel-group {
+	margin-left: 100px;
+    margin-right: 100px;
+}
+
+.what-info {
+	font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.modal-body .row {
+	padding: 10px;
+}
+
+.area-choice {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: rgba(211, 211, 211, 0.21);
+    border-color: #ccc;
+}
+
+.area-choice:hover {
+	background-color: rgba(3, 169, 244, 0.05);
+}
+
+.panel-title {
+	font-size: 1.25em;
+}
+
+#sortable { 
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+	width: 60%; 
+}
+
+#sortable tr {
+	cursor: move;
+}
+
+.text-line {
+    background-color: transparent;
+    color: black;
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #eeeeee 1px;
+    padding: 3px 10px;
+}
+
+.ui-dialog {
+	z-index: 1100 !important;
+}
+
+/******** Show all information page styles ******/
+
+.view-all-questions {
+	text-align:center;
+	color:rgba(158, 158, 158, 0.82);
+}
+
+.category-block {
+	text-align:center;
+	width: 500px;
+	margin: 0 auto;
+}
+
+.category-header {
+	background-color:#56CCF2;
+	color:white;
+	height: auto;
+	padding-bottom: 0.2em;
+	margin-bottom: 0.5em;
+}
+
+.category-text {
+	top: 50%;
+    transform: translateY(25%);
+}
+
+.show-all-info-item {
+	text-align:center;
+}
+
+.editField {
+	cursor: pointer;
+}
+
+.question {
+	font-size:20px;
+}

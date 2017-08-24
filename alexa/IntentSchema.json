@@ -1,0 +1,41 @@
+{
+	"intents":[
+		{
+			"intent": "AMAZON.HelpIntent"
+		},
+		
+		{
+			"intent": "AMAZON.YesIntent"
+		},
+		
+		{
+			"intent": "AMAZON.NoIntent"
+		},
+		
+		{
+			"intent": "quitIntent"
+		},
+		
+		{
+			"intent": "questionIntent",
+			"slots": [
+				{
+					"name": "QUESTION_ITEM",
+					"type": "QuestionItemSlot"
+				},
+				{
+					"name": "PLACES",
+					"type": "AMAZON.CivicStructure"
+				},
+				{
+					"name": "FOODS",
+					"type": "AMAZON.Food"
+				},
+				{
+					"name": "DEVICES",
+					"type": "AMAZON.Devices"
+				}
+			]
+		}
+	]
+}
